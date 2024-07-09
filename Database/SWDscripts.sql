@@ -80,7 +80,7 @@ ALTER DATABASE [FinalProjectSWD] SET QUERY_STORE = ON
 GO
 ALTER DATABASE [FinalProjectSWD] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
 GO
-USE [FinalProjectSWD]
+use [FinalProjectSWD]
 GO
 /****** Object:  Table [dbo].[Admin]    Script Date: 08/07/2024 23:21:51 ******/
 SET ANSI_NULLS ON
@@ -164,7 +164,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Order](
 	[userId] [int] NOT NULL,
-	[orderId] [int] NOT NULL,
+	[orderId] [int] NOT NULL identity(1,1),
 	[creationDate] [date] NOT NULL,
 	[paymentDate] [date] NOT NULL,
 	[totalAmount] [money] NOT NULL,
@@ -224,7 +224,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Product](
-	[productId] [int] NOT NULL,
+	[productId] [int] NOT NULL identity(1,1),
 	[userId] [int] NOT NULL,
 	[categoryId] [int] NOT NULL,
 	[unitPrice] [money] NULL,
@@ -300,7 +300,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[User](
-	[userId] [int] NOT NULL,
+	[userId] [int] NOT NULL identity(1,1),
 	[username] [nvarchar](50) NOT NULL,
 	[password] [nvarchar](50) NOT NULL,
 	[fullname] [nvarchar](50) NOT NULL,
